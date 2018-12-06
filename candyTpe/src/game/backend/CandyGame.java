@@ -52,7 +52,6 @@ public class CandyGame implements GameListener {
 		return state.playerWon();
 	}
 	
-
 	@Override
 	public void cellExplosion(Element e) {
 		state.addScore(e.getScore());
