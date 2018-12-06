@@ -12,7 +12,7 @@ import game.backend.element.Wall;
 import game.backend.element.WrappedCandy;
 import javafx.scene.image.Image;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.Map;
 
 public class ImageManager {
