@@ -9,7 +9,7 @@ public class ScorePanel extends BorderPane {
 
 	private Label scoreLabel;
 	private Label movesLabel;
-
+//probando
 	public ScorePanel() {
 		setStyle("-fx-background-color: #5490ff");
 		scoreLabel = new Label("Points: 0");
