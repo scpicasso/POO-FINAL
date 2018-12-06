@@ -91,5 +91,11 @@ public class Level3 extends Grid{
 		public boolean playerWon() {
 			return getDrops() >= requiredDrops;
 		}
+
+		@Override
+		public int getRemainingMoves() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 	}
 }

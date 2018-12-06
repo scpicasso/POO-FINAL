@@ -83,5 +83,11 @@ public class Level2 extends Grid{
 		public boolean playerWon() {
 			return getScore() > requiredScore;
 		}
+
+		@Override
+		public int getRemainingMoves() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 	}
 }
