@@ -19,6 +19,7 @@ public class Candy extends Element {
 		this.color = color;
 	}
 	
+	
 	@Override
 	public boolean isMovable() {
 		return true;

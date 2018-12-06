@@ -11,8 +11,8 @@ import game.backend.element.Wall;
 
 public class Level3 extends Grid{
 	
-	private static int REQUIRED_DROPS = 5; 
-	private static int MAX_MOVES = 1000; 
+	private static int REQUIRED_DROPS = 4; 
+	private static int MAX_MOVES = 45; 
 	
 	
 	private Cell wallCell;
@@ -34,15 +34,18 @@ public class Level3 extends Grid{
 
 		
 		//corners
-		g()[0][0].setAround(candyDropGenCell, g()[1][0], wallCell, g()[0][1]);
-		g()[0][SIZE-1].setAround(candyDropGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
+		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
+		g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
 		g()[SIZE-1][0].setAround(g()[SIZE-2][0], wallCell, wallCell, g()[SIZE-1][1]);
 		g()[SIZE-1][SIZE-1].setAround(g()[SIZE-2][SIZE-1], wallCell, g()[SIZE-1][SIZE-2], wallCell);
 
+
+		
 		//upper line cells
 		for (int j = 1; j < SIZE-1; j++) {
-			g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
+			g()[0][j].setAround(candyDropGenCell,g()[0][j],g()[0][j-1],g()[0][j+1]);
 		}
+			
 		//bottom line cells
 		for (int j = 1; j < SIZE-1; j++) {
 			g()[SIZE-1][j].setAround(g()[SIZE-2][j], wallCell, g()[SIZE-1][j-1],g()[SIZE-1][j+1]);

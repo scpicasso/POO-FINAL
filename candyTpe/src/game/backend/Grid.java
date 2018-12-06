@@ -2,6 +2,12 @@ package game.backend;
 
 import game.backend.cell.Cell;
 import game.backend.element.Candy;
+import game.backend.element.Cherry;
+import game.backend.Grid;
+import game.backend.element.Element;
+import game.backend.element.Nothing;
+import game.backend.move.Direction;
+
 import game.backend.element.CandyColor;
 import game.backend.element.Element;
 import game.backend.move.Move;
@@ -78,6 +84,10 @@ public abstract class Grid {
 		g[i][j].clearContent();
 	}
 	
+	public void clearContentCherry(int i, int j) {
+		g[i][j].clearContentCherry();
+	}
+	
 	public void setContent(int i, int j, Element e) {
 		g[i][j].setContent(e);
 	}
@@ -88,12 +98,24 @@ public abstract class Grid {
 		if (move.isValid()) {
 			move.removeElements();
 			fallElements();
+			checkForCherry();
+			fallElements();
 			return true;
 		} else {
 			swapContent(i1, j1, i2, j2);
 			return false;
 		}
 	}	
+	
+	public void checkForCherry() {
+		for(int j=0;j < SIZE; j++) {
+			if(g[SIZE-1][j].getContent() instanceof Cherry) {
+				clearContentCherry(SIZE-1,j);
+				state.addDrops();
+				
+			}
+		}
+	}
 	
 	public Figure tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {

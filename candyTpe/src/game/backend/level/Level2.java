@@ -9,7 +9,7 @@ import game.backend.level.Level2.Level2State;
 
 public class Level2 extends Grid{
 	
-	private static int REQUIRED_SCORE = 5000; 
+	private static int REQUIRED_JELLIES = 10; 
 	private static int MAX_MOVES = 20; 
 	
 	
@@ -18,7 +18,7 @@ public class Level2 extends Grid{
 	
 	@Override
 	protected GameState newState() {
-		return new Level2State(REQUIRED_SCORE, MAX_MOVES);
+		return new Level2State(REQUIRED_JELLIES, MAX_MOVES);
 	}
 
 	@Override
@@ -68,11 +68,11 @@ public class Level2 extends Grid{
 	}
 	
 	public class Level2State extends GameState {
-		private long requiredScore;
+		private long requiredJellies;
 		private long maxMoves;
 		
-		public Level2State(long requiredScore, int maxMoves) {
-			this.requiredScore = requiredScore;
+		public Level2State(long requiredJellies, int maxMoves) {
+			this.requiredJellies = requiredJellies;
 			this.maxMoves = maxMoves;
 		}
 		
@@ -81,7 +81,7 @@ public class Level2 extends Grid{
 		}
 		
 		public boolean playerWon() {
-			return getScore() > requiredScore;
+			return getScore() > requiredJellies;
 		}
 	}
 }
