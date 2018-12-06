@@ -14,6 +14,10 @@ public class Level1 extends Grid {
 	private Cell wallCell;
 	private Cell candyGenCell;
 	
+	public static int getMaxMoves() {
+		return MAX_MOVES;
+	}
+	
 	@Override
 	protected GameState newState() {
 		return new Level1State(REQUIRED_SCORE, MAX_MOVES);
@@ -67,11 +71,15 @@ public class Level1 extends Grid {
 	
 	private class Level1State extends GameState {
 		private long requiredScore;
-		private long maxMoves;
+		private int maxMoves;
 		
 		public Level1State(long requiredScore, int maxMoves) {
 			this.requiredScore = requiredScore;
 			this.maxMoves = maxMoves;
+		}
+		
+		public int getRemainingMoves() {
+			return maxMoves - getMoves();
 		}
 		
 		public boolean gameOver() {

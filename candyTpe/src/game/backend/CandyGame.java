@@ -40,6 +40,7 @@ public class CandyGame implements GameListener {
 		grid.addListener(listener);
 	}
 	
+	
 	public long getScore() {
 		return state.getScore();
 	}
@@ -50,6 +51,10 @@ public class CandyGame implements GameListener {
 	
 	public boolean playerWon() {
 		return state.playerWon();
+	}
+	
+	public int getRemainingMoves() {
+		return state.getRemainingMoves();
 	}
 	
 	@Override

@@ -29,9 +29,13 @@ public abstract class GameState {
 	public void addDrops() {
 		drops++;
 	}
+		
 	
 	public abstract boolean gameOver();
 	
 	public abstract boolean playerWon();
+	
+	public abstract int getRemainingMoves();
+
 
 }

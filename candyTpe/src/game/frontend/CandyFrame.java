@@ -71,6 +71,7 @@ public class CandyFrame extends VBox {
 					System.out.println("Get second = " +  newPoint);
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					String message = ((Long)game().getScore()).toString();
+					String remainMoves = ((Integer)game().getRemainingMoves()).toString();
 					if (game().isFinished()) {
 						if (game().playerWon()) {
 							message = message + " Finished - Player Won!";
@@ -79,6 +80,7 @@ public class CandyFrame extends VBox {
 						}
 					}
 					scorePanel.updateScore(message);
+					scorePanel.updateRemainingMoves(remainMoves);
 					lastPoint = null;
 				}
 			}
