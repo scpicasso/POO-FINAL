@@ -11,11 +11,15 @@ public class Level2 extends Grid{
 	
 	private static int REQUIRED_SCORE = 5000; 
 	private static int MAX_MOVES = 25; 
-	
+
 	
 	private Cell wallCell;
 	private Cell candyGenCell;
 	private Cell gapCell;
+	
+	public static int getMaxMoves() {
+		return MAX_MOVES;
+	}
 	
 	@Override
 	protected GameState newState() {
@@ -78,9 +82,9 @@ public class Level2 extends Grid{
 		return ret;
 	}
 	
-	public class Level2State extends GameState {
+	private class Level2State extends GameState {
 		private long requiredScore;
-		private long maxMoves;
+		private int maxMoves;
 		
 		public Level2State(long requiredScore, int maxMoves) {
 			this.requiredScore = requiredScore;
@@ -97,8 +101,8 @@ public class Level2 extends Grid{
 
 		@Override
 		public int getRemainingMoves() {
-			// TODO Auto-generated method stub
-			return 0;
+			return maxMoves - getMoves();
 		}
+
 	}
 }

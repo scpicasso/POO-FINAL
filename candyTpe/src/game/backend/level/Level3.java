@@ -12,12 +12,20 @@ import game.backend.element.Wall;
 public class Level3 extends Grid{
 	
 	private static int REQUIRED_DROPS = 4; 
-	private static int MAX_MOVES = 45; 
+	private static int MAX_MOVES = 3; 
 	
 	
 	private Cell wallCell;
 	private Cell candyDropGenCell;
 	private Cell candyGenCell;
+	
+	public static int getMaxMoves() {
+		return MAX_MOVES;
+	}
+	
+	public static int getRequiredDrops() {
+		return REQUIRED_DROPS;
+	}
 	
 	@Override
 	protected GameState newState() {
@@ -75,11 +83,13 @@ public class Level3 extends Grid{
 		return ret;
 	}
 	
-	public class Level3State extends GameState {
-		private long requiredDrops;
+
+
+	private class Level3State extends GameState {
+		private int requiredDrops;
 		private int maxMoves;
 		
-		public Level3State(long requiredDrops, int maxMoves) {
+		public Level3State(int requiredDrops, int maxMoves) {
 			this.requiredDrops = requiredDrops;
 			this.maxMoves = maxMoves;
 		}
@@ -96,5 +106,6 @@ public class Level3 extends Grid{
 		public int getRemainingMoves() {
 			return maxMoves - getMoves();
 		}
+		
 	}
 }

@@ -37,5 +37,4 @@ public abstract class GameState {
 	
 	public abstract int getRemainingMoves();
 
-
 }

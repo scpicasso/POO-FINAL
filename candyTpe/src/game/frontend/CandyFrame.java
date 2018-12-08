@@ -4,7 +4,7 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
-
+import game.backend.level.Level3;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
@@ -70,17 +70,25 @@ public class CandyFrame extends VBox {
 				if (newPoint != null) {
 					System.out.println("Get second = " +  newPoint);
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
-					String message = ((Long)game().getScore()).toString();
-					String remainMoves = ((Integer)game().getRemainingMoves()).toString();
+					String score = ((Long)game().getScore()).toString();
+					String remainingMoves = ((Integer)game().getRemainingMoves()).toString();
+					
+					/*Level3 has fruits */
+					String fruits;
+					if( CandyGame.getLevelClass() == Level3.class) {
+						fruits = ((Integer)(Level3.getRequiredDrops() - game().getDrops())).toString();
+						scorePanel.updateRemainingFruits(fruits);
+					}
+					
 					if (game().isFinished()) {
 						if (game().playerWon()) {
-							message = message + " Finished - Player Won!";
+							score = score + " Finished - Player Won!";
 						} else {
-							message = message + " Finished - Loser !";
+							score = score + " Finished - Loser !";
 						}
 					}
-					scorePanel.updateScore(message);
-					scorePanel.updateRemainingMoves(remainMoves);
+					scorePanel.updateScore(score);
+					scorePanel.updateRemainingMoves(remainingMoves);
 					lastPoint = null;
 				}
 			}
