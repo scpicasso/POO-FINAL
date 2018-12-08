@@ -1,10 +1,6 @@
 package game.backend.element;
 
 public class Cherry extends Element{
-	
-	public Cherry() {
-	}
-	
 
 	@Override
 	public boolean isMovable() {

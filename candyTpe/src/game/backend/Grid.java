@@ -5,11 +5,7 @@ import game.backend.element.Candy;
 import game.backend.element.Cherry;
 import game.backend.Grid;
 import game.backend.element.Element;
-import game.backend.element.Nothing;
-import game.backend.move.Direction;
-
 import game.backend.element.CandyColor;
-import game.backend.element.Element;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
 
@@ -98,8 +94,9 @@ public abstract class Grid {
 		if (move.isValid()) {
 			move.removeElements();
 			fallElements();
-			checkForCherry();
-			fallElements();
+			while(checkForCherry()) {
+				fallElements();
+			}
 			return true;
 		} else {
 			swapContent(i1, j1, i2, j2);
@@ -107,14 +104,16 @@ public abstract class Grid {
 		}
 	}	
 	
-	public void checkForCherry() {
+	public boolean checkForCherry() {
+		boolean flag = false;
 		for(int j=0;j < SIZE; j++) {
-			if(g[SIZE-1][j].getContent() instanceof Cherry) {
+			if((g[SIZE-1][j].getContent()) instanceof Cherry) {
 				clearContentCherry(SIZE-1,j);
 				state.addDrops();
-				
+				flag = true;
 			}
 		}
+		return flag;
 	}
 	
 	public Figure tryRemove(Cell cell) {

@@ -22,7 +22,9 @@ public abstract class Move {
 	}
 	
 	public boolean isValid() {
-		if(get(i1,j1) instanceof Cherry && get(i2,j2) instanceof Bomb || get(i2,j2) instanceof Cherry && get(i1,j1) instanceof Bomb || get(i2,j2) instanceof Cherry && get(i1,j1) instanceof Cherry) {
+		if((get(i1,j1) instanceof Cherry && get(i2,j2) instanceof Bomb) || 
+			(get(i2,j2) instanceof Cherry && get(i1,j1) instanceof Bomb) || 
+			(get(i2,j2) instanceof Cherry && get(i1,j1) instanceof Cherry))  {
 			return false;
 		}
 		if ( (i1 == i2 && Math.abs(j1-j2) == 1) || (j1 == j2 && Math.abs(i1-i2) == 1)) {

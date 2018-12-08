@@ -20,7 +20,7 @@ public class CandyAndDropsGeneratorCell extends CandyGeneratorCell {
 	@Override
 	public Element getContent() {
 		if(maxDrops>0) {
-			if((Math.random() * 100)<3) {
+			if((Math.random() * 100)< 3) {
 				maxDrops--;
 				return new Cherry();	
 			}

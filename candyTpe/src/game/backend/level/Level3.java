@@ -12,7 +12,7 @@ import game.backend.element.Wall;
 public class Level3 extends Grid{
 	
 	private static int REQUIRED_DROPS = 4; 
-	private static int MAX_MOVES = 3; 
+	private static int MAX_MOVES = 50; 
 	
 	
 	private Cell wallCell;

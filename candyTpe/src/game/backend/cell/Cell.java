@@ -42,7 +42,7 @@ public class Cell {
 	
 	public void clearContent() {
 		if (content.isMovable()) {
-			if(hasFloor() && content instanceof Cherry) {
+			if(content instanceof Cherry) {
 				return;
 			}
 			Direction[] explosionCascade = content.explode();
