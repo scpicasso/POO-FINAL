@@ -3,6 +3,7 @@ import game.backend.element.Cherry;
 
 import game.backend.Grid;
 import game.backend.element.Element;
+import game.backend.element.GapElement;
 import game.backend.element.Nothing;
 import game.backend.move.Direction;
 
@@ -91,19 +92,22 @@ public class Cell {
 
 	public boolean fallUpperContent() {
 		Cell up = around[Direction.UP.ordinal()];
-		if (this.isEmpty() && !up.isEmpty()) {
-			if(up.isMovable()) {
+		if (this.isEmpty()) {
+			if(up.isMovable() && !up.isEmpty()) {
 				this.content = up.getAndClearContent();
 				grid.wasUpdated();
 				if (this.hasFloor()) {
 					grid.tryRemove(this);
 					return true;
 				} else {
+					
 					Cell down = around[Direction.DOWN.ordinal()];
 					return down.fallUpperContent();
 				}
 			}
-			else if(up instanceof GapCell) {
+			else if(up.getContent() instanceof GapElement) {
+				//Cell c = ((GapCell) up).bridgeContent();
+				//this.content = c.getAndClearContent();
 				grid.wasUpdated();
 				if (this.hasFloor()) {
 					grid.tryRemove(this);
@@ -117,7 +121,6 @@ public class Cell {
 	 
 		return false;
 	}
-	
 	
 	
 	public void setContent(Element content) {

@@ -15,20 +15,19 @@ public class GapCell extends Cell{
 		setContent(new GapElement());
 	}
 	
-	
-	
-	public Element getTrueContent() {
+	public Cell bridgeContent() {
 		Cell[] around = getSurroundings();
 		Cell up = around[Direction.UP.ordinal()];
-		Element e;
-		if(up instanceof GapCell) {
-			e = ((GapCell) up).getTrueContent();
+		if(up.getContent() instanceof GapElement) {
+			return ((GapCell) up).bridgeContent();
 		}
-		else {
-			e = up.getAndClearContent();
-		}
-		return e;
-
+		boolean b = up.fallUpperContent();
+		return up;
+	}
+	
+	@Override
+	public boolean fallUpperContent() {
+		return true;
 	}
 	
 	

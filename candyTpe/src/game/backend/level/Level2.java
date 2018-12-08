@@ -47,10 +47,10 @@ public class Level2 extends Grid{
 		}
 		
 		//gap cells
-		for(int i = 3; i < 6; i++) {
-
+		for(int i = 4; i < 5; i++) {
 			for (int j = 0; j < SIZE; j++) {
-				g()[i][j] = gapCell;
+				g()[i][j]= gapCell;
+				g()[i][j].setAround(g()[i-1][j], g()[i+1][j], gapCell, gapCell);
 			}
 		}
 		
