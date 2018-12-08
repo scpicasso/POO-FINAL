@@ -2,10 +2,8 @@ package game.backend.cell;
 
 import game.backend.Grid;
 import game.backend.move.Direction;
-import game.backend.element.Cherry;
 import game.backend.element.Element;
 import game.backend.element.GapElement;
-import game.backend.element.Nothing;
 
 public class GapCell extends Cell{
 
@@ -14,7 +12,6 @@ public class GapCell extends Cell{
 		super(grid);
 		setContent(new GapElement());
 	}
-	
 	
 	
 	public Element getTrueContent() {
