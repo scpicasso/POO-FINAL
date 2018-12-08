@@ -33,24 +33,24 @@ public class Level2 extends Grid{
 		wallCell.setContent(new Wall());
 		candyGenCell = new CandyGeneratorCell(this);
 		gapCell = new GapCell(this);
+
 		
 		//corners
 		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
 		g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
 		g()[SIZE-1][0].setAround(g()[SIZE-2][0], wallCell, wallCell, g()[SIZE-1][1]);
 		g()[SIZE-1][SIZE-1].setAround(g()[SIZE-2][SIZE-1], wallCell, g()[SIZE-1][SIZE-2], wallCell);
-
-		//gap cells
-		
-		for(int i = 3; i < 6; i++) {
-			for (int j = 1; j < SIZE-1; j++) {
-				g()[i][j].setAround(gapCell,g()[i+1][j],g()[i][j-1],g()[i][j+1]);
-			}
-		}
 		
 		//upper line cells
 		for (int j = 1; j < SIZE-1; j++) {
 			g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
+		}
+		
+		//gap cells
+		for(int i = 3; i < 6; i++) {
+			for(int j = 0; j < SIZE; j++) {
+				g()[i][j]= gapCell;
+			}
 		}
 		
 		//bottom line cells
@@ -71,6 +71,7 @@ public class Level2 extends Grid{
 				g()[i][j].setAround(g()[i-1][j],g()[i+1][j],g()[i][j-1],g()[i][j+1]);
 			}
 		}
+		
 	}
 	
 	@Override
