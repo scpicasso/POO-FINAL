@@ -40,7 +40,7 @@ public class Level2 extends Grid{
 		g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
 		g()[SIZE-1][0].setAround(g()[SIZE-2][0], wallCell, wallCell, g()[SIZE-1][1]);
 		g()[SIZE-1][SIZE-1].setAround(g()[SIZE-2][SIZE-1], wallCell, g()[SIZE-1][SIZE-2], wallCell);
-		
+
 		//upper line cells
 		for (int j = 1; j < SIZE-1; j++) {
 			g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
@@ -48,8 +48,9 @@ public class Level2 extends Grid{
 		
 		//gap cells
 		for(int i = 3; i < 6; i++) {
-			for(int j = 0; j < SIZE; j++) {
-				g()[i][j]= gapCell;
+
+			for (int j = 0; j < SIZE; j++) {
+				g()[i][j] = gapCell;
 			}
 		}
 		
