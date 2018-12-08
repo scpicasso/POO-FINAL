@@ -77,7 +77,7 @@ public class Level3 extends Grid{
 	
 	public class Level3State extends GameState {
 		private long requiredDrops;
-		private long maxMoves;
+		private int maxMoves;
 		
 		public Level3State(long requiredDrops, int maxMoves) {
 			this.requiredDrops = requiredDrops;
@@ -94,8 +94,7 @@ public class Level3 extends Grid{
 
 		@Override
 		public int getRemainingMoves() {
-			// TODO Auto-generated method stub
-			return 0;
+			return maxMoves - getMoves();
 		}
 	}
 }

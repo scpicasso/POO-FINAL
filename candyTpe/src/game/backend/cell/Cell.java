@@ -80,6 +80,14 @@ public class Cell {
 		}
 		return null;
 	}
+	
+	protected Cell[] getSurroundings() {
+		return around;
+	}
+	
+	protected Grid getGrid() {
+		return grid;
+	}
 
 	public boolean fallUpperContent() {
 		Cell up = around[Direction.UP.ordinal()];

@@ -5,6 +5,7 @@ import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Cherry;
 import game.backend.element.Element;
+import game.backend.element.GapElement;
 import game.backend.element.HorizontalStripedCandy;
 import game.backend.element.Nothing;
 import game.backend.element.VerticalStripedCandy;
@@ -29,6 +30,8 @@ public class ImageManager {
 		images.put(new Bomb().getKey(),  new Image(IMAGE_PATH + "bomb.png"));
 		images.put(new Wall().getKey(),  new Image(IMAGE_PATH + "wall.png"));
 		images.put(new Cherry().getKey(),  new Image(IMAGE_PATH + "cherries.png"));
+		images.put(new GapElement().getKey(),  new Image(IMAGE_PATH + "gapCell.png"));
+
 		for (CandyColor cc: CandyColor.values()) {
 			images.put(new Candy(cc).getFullKey(),   new Image(IMAGE_PATH + cc.toString().toLowerCase() + "Candy.png"));
 		}
