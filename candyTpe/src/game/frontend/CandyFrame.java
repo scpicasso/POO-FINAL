@@ -4,6 +4,7 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
+import game.backend.level.Level2;
 import game.backend.level.Level3;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -60,22 +61,40 @@ public class CandyFrame extends VBox {
 		});
 
 		listener.gridUpdated();
+		
+		Class<?> levelClass = CandyGame.getLevelClass();
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
 				lastPoint = translateCoords(event.getX(), event.getY());
+				if(levelClass == Level2.class) {
+					if((int)lastPoint.getX() >= Level2.getStartGap() && (int)lastPoint.getX() <= Level2.getEndGap()) {
+						lastPoint = null;
+					}
+				}
 				System.out.println("Get first = " +  lastPoint);
-			} else {
+			} 
+			else {
 				Point2D newPoint = translateCoords(event.getX(), event.getY());
+				boolean isValid = true;
 				if (newPoint != null) {
-					System.out.println("Get second = " +  newPoint);
+					if(levelClass == Level2.class) {
+						if((int)newPoint.getX() >= Level2.getStartGap() && (int)newPoint.getX() <=  Level2.getEndGap()) {
+							newPoint = null;
+							isValid = false;
+						}
+					}
+					
+				System.out.println("Get second = " +  newPoint);
+					
+				if(isValid) {
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					String score = ((Long)game().getScore()).toString();
 					String remainingMoves = ((Integer)game().getRemainingMoves()).toString();
-					
-					/*Level3 has fruits */
+						
+					//Level3 has fruits
 					String fruits;
-					if( CandyGame.getLevelClass() == Level3.class) {
+					if( levelClass == Level3.class) {
 						fruits = ((Integer)(Level3.getRequiredDrops() - game().getDrops())).toString();
 						scorePanel.updateRemainingFruits(fruits);
 					}
@@ -89,7 +108,8 @@ public class CandyFrame extends VBox {
 					}
 					scorePanel.updateScore(score);
 					scorePanel.updateRemainingMoves(remainingMoves);
-					lastPoint = null;
+				}
+				lastPoint = null;
 				}
 			}
 		});

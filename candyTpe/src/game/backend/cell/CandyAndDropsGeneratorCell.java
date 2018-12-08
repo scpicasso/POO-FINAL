@@ -9,19 +9,19 @@ import game.backend.element.Element;
 
 public class CandyAndDropsGeneratorCell extends CandyGeneratorCell {
 	
-	private int maxDrops;
+	private int drops;
 	
 	public CandyAndDropsGeneratorCell(Grid grid, int drops) {
 		super(grid);
-		this.maxDrops = drops;
+		this.drops = drops;
 		
 	}
 	
 	@Override
 	public Element getContent() {
-		if(maxDrops>0) {
+		if(drops>0) {
 			if((Math.random() * 100)< 3) {
-				maxDrops--;
+				drops--;
 				return new Cherry();	
 			}
 		}

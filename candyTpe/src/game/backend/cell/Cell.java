@@ -85,39 +85,27 @@ public class Cell {
 		return around;
 	}
 	
+	
 	protected Grid getGrid() {
 		return grid;
 	}
 
+	
 	public boolean fallUpperContent() {
 		Cell up = around[Direction.UP.ordinal()];
-		if (this.isEmpty() && !up.isEmpty()) {
-			if(up.isMovable()) {
-				this.content = up.getAndClearContent();
-				grid.wasUpdated();
-				if (this.hasFloor()) {
-					grid.tryRemove(this);
-					return true;
-				} else {
-					Cell down = around[Direction.DOWN.ordinal()];
-					return down.fallUpperContent();
-				}
+		if (this.isEmpty() && !up.isEmpty() && up.isMovable()) {
+			this.content = up.getAndClearContent();
+			grid.wasUpdated();
+			if (this.hasFloor()) {
+				grid.tryRemove(this);
+				return true;
+			} else {
+				Cell down = around[Direction.DOWN.ordinal()];
+				return down.fallUpperContent();
 			}
-			else if(up instanceof GapCell) {
-				grid.wasUpdated();
-				if (this.hasFloor()) {
-					grid.tryRemove(this);
-					return true;
-				} else {
-					Cell down = around[Direction.DOWN.ordinal()];
-					return down.fallUpperContent();
-				}
-			}
-		}
-	 
+		} 
 		return false;
 	}
-	
 	
 	
 	public void setContent(Element content) {
