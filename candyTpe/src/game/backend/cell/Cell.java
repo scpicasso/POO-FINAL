@@ -41,7 +41,7 @@ public class Cell {
 	}
 	
 	public void clearContent() {
-		if (content.isMovable()) { //Tiro error cuando la ultima cherry estaba por caer y no gano el juego
+		if (content.isMovable()) {
 			if(hasFloor() && content instanceof Cherry) {
 				return;
 			}
