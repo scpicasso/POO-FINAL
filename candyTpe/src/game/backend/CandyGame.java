@@ -5,12 +5,12 @@ import game.backend.element.Element;
 
 public class CandyGame implements GameListener {
 	
-	private Class<?> levelClass;
+	private static Class<?> levelClass;
 	private Grid grid;
 	private GameState state;
 	
 	public CandyGame(Class<?> clazz) {
-		this.levelClass = clazz;
+		levelClass = clazz;
 	}
 	
 	public void initGame() {
@@ -55,6 +55,14 @@ public class CandyGame implements GameListener {
 	
 	public int getRemainingMoves() {
 		return state.getRemainingMoves();
+	}
+	
+	public int getDrops() {
+		return state.getDrops();
+	}
+	
+	public static Class<?> getLevelClass(){
+		return levelClass;
 	}
 	
 	@Override
