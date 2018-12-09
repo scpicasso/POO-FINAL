@@ -67,9 +67,13 @@ public class Cell {
 	}
 	
 	private void explode(Direction d) {
+		try {
 		clearContent();
 		if (this.around[d.ordinal()] != null)
 			this.around[d.ordinal()].explode(d);
+		}catch(NullPointerException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public Element getAndClearContent() {
