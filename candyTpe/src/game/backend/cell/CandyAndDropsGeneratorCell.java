@@ -4,8 +4,9 @@ import game.backend.Grid;
 import game.backend.element.Candy;
 
 import game.backend.element.CandyColor;
-import game.backend.element.Cherry;
 import game.backend.element.Element;
+import game.backend.element.Fruit;
+import game.backend.element.FruitType;
 
 public class CandyAndDropsGeneratorCell extends CandyGeneratorCell {
 	
@@ -22,7 +23,8 @@ public class CandyAndDropsGeneratorCell extends CandyGeneratorCell {
 		if(drops>0) {
 			if((Math.random() * 100)< 3) {
 				drops--;
-				return new Cherry();	
+				int i = (int)(Math.random() * FruitType.values().length);
+				return new Fruit(FruitType.values()[i]);	
 			}
 		}
 		int i = (int)(Math.random() * CandyColor.values().length);

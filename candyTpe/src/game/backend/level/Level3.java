@@ -7,11 +7,12 @@ import game.backend.cell.CandyGeneratorCell;
 
 
 import game.backend.cell.Cell;
+import game.backend.element.Fruit;
 import game.backend.element.Wall;
 
 public class Level3 extends Grid{
 	
-	private static int REQUIRED_DROPS = 4; 
+	private static int REQUIRED_DROPS = 3; 
 	private static int MAX_MOVES = 40; 
 	
 	
@@ -78,9 +79,29 @@ public class Level3 extends Grid{
 	public boolean tryMove(int i1, int j1, int i2, int j2) {
 		boolean ret;
 		if (ret = super.tryMove(i1, j1, i2, j2)) {
+			while (checkForFruit()) {
+				fallElements();
+			}
 			state().addMove();
 		}
 		return ret;
+	}
+	
+	public boolean checkForFruit() {
+		boolean flag = false;
+		for(int j=0;j < SIZE; j++) {
+			if((g()[SIZE-1][j].getContent()) instanceof Fruit) {
+				clearContentFruit(SIZE-1,j);
+				state().addDrops();
+				flag = true;
+			}
+		}
+		return flag;
+	}
+	
+	
+	public void clearContentFruit(int i, int j){
+		g()[i][j].clearContentFruit();
 	}
 	
 

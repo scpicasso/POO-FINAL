@@ -1,8 +1,9 @@
 package game.backend.cell;
-import game.backend.element.Cherry;
+
 
 import game.backend.Grid;
 import game.backend.element.Element;
+import game.backend.element.Fruit;
 import game.backend.element.Nothing;
 import game.backend.move.Direction;
 
@@ -42,7 +43,7 @@ public class Cell {
 	
 	public void clearContent() {
 		if (content.isMovable()) {
-			if(content instanceof Cherry) {
+			if(content instanceof Fruit) {
 				return;
 			}
 			Direction[] explosionCascade = content.explode();
@@ -55,7 +56,7 @@ public class Cell {
 		}
 	}
 	
-	public void clearContentCherry() {
+	public void clearContentFruit() {
 		grid.cellExplosion(content);
 		this.content = new Nothing();
 	}
