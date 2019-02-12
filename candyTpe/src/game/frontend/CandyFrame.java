@@ -23,7 +23,9 @@ public class CandyFrame extends VBox {
 	private ImageManager images;
 	private Point2D lastPoint;
 	private CandyGame game;
+	private boolean gameOver = false;
 
+	
 	public CandyFrame(CandyGame game) {
 		this.game = game;
 		getChildren().add(new AppMenu());
@@ -63,7 +65,8 @@ public class CandyFrame extends VBox {
 		listener.gridUpdated();
 		
 		Class<?> levelClass = CandyGame.getLevelClass();
-
+		
+		
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null) {
 				lastPoint = translateCoords(event.getX(), event.getY());
@@ -86,8 +89,8 @@ public class CandyFrame extends VBox {
 					}
 					
 				System.out.println("Get second = " +  newPoint);
-					
-				if(isValid) {
+				
+				if(isValid && !gameOver) {
 					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
 					String score = ((Long)game().getScore()).toString();
 					String remainingMoves = ((Integer)game().getRemainingMoves()).toString();
@@ -100,6 +103,7 @@ public class CandyFrame extends VBox {
 					}
 					
 					if (game().isFinished()) {
+						gameOver = true;
 						if (game().playerWon()) {
 							score = score + " Finished - Player Won!";
 						} else {
@@ -113,7 +117,7 @@ public class CandyFrame extends VBox {
 				}
 			}
 		});
-
+		
 	}
 
 	private CandyGame game() {
