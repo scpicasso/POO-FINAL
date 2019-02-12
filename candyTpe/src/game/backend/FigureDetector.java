@@ -41,7 +41,9 @@ public class FigureDetector {
 		return acum;
 	}
 	
+	
 	public void removeFigure(int i, int j, Figure f) {
+		try {
 		CandyColor color = ((Candy) grid.get(i, j)).getColor();
 		grid.clearContent(i, j);
 		if (f.hasReplacement()) {
@@ -49,6 +51,10 @@ public class FigureDetector {
 		}
 		for (Point p: f.getPoints()) {
 			grid.clearContent(i + p.x, j + p.y);
+		}
+		
+		}catch( ClassCastException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

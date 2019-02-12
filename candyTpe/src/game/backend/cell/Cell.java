@@ -75,6 +75,9 @@ public class Cell {
 		}catch(NullPointerException e) {
 			System.out.println(e.getMessage());
 		}
+		catch(StackOverflowError e){
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public Element getAndClearContent() {
