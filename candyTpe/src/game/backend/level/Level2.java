@@ -9,7 +9,7 @@ import game.backend.element.Wall;
 
 public class Level2 extends Grid{
 	
-	private static int REQUIRED_SCORE = 5000; 
+	private static int REQUIRED_SCORE = 3000; 
 	private static int MAX_MOVES = 20; 
 	
 	/* Row where the gap starts and ends */
